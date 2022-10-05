@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <nav class="navbar bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                Zafar MyBlog
+            </a>
+            <footer class="btn-group">
+                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                  {{ user.first_name | title }}
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a class="dropdown-item" href="{% url 'article_create' %}">Yangi maqola</a></li>
+                  <li><a class="dropdown-item" href="#">Profil</a></li>
+                  <li><a class="dropdown-item" href="{% url 'password_change' %}">Parolni tahrirlash</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'logout' %}">Chiqish</a></li>
+                </ul>
+          </footer>
+          </div>
+    </nav>
+    <h2>Xush kelibsiz,  {{ user.first_name }}!</h2>
+    <div class="card" style="width: 18rem;">
+        <img src="https://images.pexels.com/photos/414102/pexels-photo-414102.jpeg?cs=srgb&dl=pexels-pixabay-414102.jpg&fm=jpg" class="card-img-top" alt="">
+        <div style="text-align: center;" class="card-body">
+          <h5 class="card-title">Zafar MyBlog</h5>
+          <p class="card-text">Bu mening shaxsiy blogim, undan foydalanishda sizga foydasi tegganidan mamnunman.</p>
+          <a href="{% url 'article_list' %}" class="btn btn-primary">Maqolalar</a>
+        </div>
+      </div>
+    {% else %}
+    <nav class="navbar bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+            Zafar MyBlog
+          </a>
+          <footer style="text-align:right;">
+        <button  type="button" class="btn btn-outline-info"><a style="text-align: right;" href="{% url 'login' %}">Kirish<a/></button>
+        <button type="button" class="btn btn-warning"><a href="{% url 'signup' %}">Ro'yxatdan o'tish</a></button>
+      </footer>
+        </div>
+      </nav>
+    <h2>Assalamu alaykum, Zafarning Blog sahifasiga xush kelibsiz!</h2>
+{% endif %}
+{% endblock content %}

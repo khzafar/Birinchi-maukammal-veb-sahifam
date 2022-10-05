@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}{{ object.title }}{% endblock title %}
+
+{% block content %}
+    <h3>Maqolani tahrirlash</h3>
+    <p>Ushbu maqolani yangilash uchun <em><b>Saqlash</b></em> tugmasini bosing</p><br>
+    <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+        {{ form|crispy }}
+        {{ form.media }}
+        <br>
+        <input class="btn btn-info ml-2" type="submit" value="Saqlash">
+    </form>
+{% endblock content %}

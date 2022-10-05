@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ object.title }}{% endblock title %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                {% if object.photo %}
+                    <img class="card-img-top" src="{{ object.photo.url }}" alt={{ object.title }}>
+                {% endif %}
+                <h3 class="card-title">{{ object.title }}</h3>
+                <p class="card-subtitle mb-2 text-muted">Muallif: {{ object.author }} | {{ object.add_date }}</p>
+                <p class="card-text">{{ object.body | safe }}<br>
+                <h4 class="text-all"><a href="{% url 'article_edit' object.pk %}">Tahrirlash</a> | <a href="{% url 'article_delete' object.pk %}">O'chirish</a> | <a href="{% url 'article_list'%}">Barcha maqolalar</a></h4>
+
+            </div>
+        </div>
+        <p></p>
+    </div>
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}{{ object.title }}{% endblock title %}
+
+{% block content %}
+    <h3>Maqolani o'chirish</h3>
+    <p>Ushbu maqola o'chirilishini xohlasangiz <em><b>O'chirish</b></em> tugmasini bosing</p>
+    <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+        {{ form|crispy }}<br>
+        <input class="btn btn-info ml-2" type="submit" value="O'chirish">
+    </form>
+{% endblock content %}
